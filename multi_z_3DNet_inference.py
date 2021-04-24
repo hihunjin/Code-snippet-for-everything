@@ -19,13 +19,11 @@ def evaluate(model, x, target=None):
 
 class MultiEvalModule(DataParallel):
     """Multi-size Segmentation Eavluator"""
-    def __init__(self, args, module, nclass, device_ids=None, flip=True,
-                 scales=[0.5, 0.75, 1.0, 1.25, 1.5, 1.75]):
+    def __init__(self, args, module, nclass, device_ids=None, flip=True):
         super(MultiEvalModule, self).__init__(module, device_ids)
         self.args = args
         self.nclass = nclass
         self.z_len = args.z_len
-        self.scales = scales
         self.flip = flip
         print('MultiEvalModule: z_len {}'. \
             format(self.z_len))
@@ -139,16 +137,15 @@ class args:
     not_bin=False
     aux=False
     z_len=40
-    scales = [0.75, 1.0, 1.25, 1.5]
     mean = [.485]*z_len
     std = [.229]*z_len
     nclass=2
     in_channels = 1
 
-######### prepare multi scale evaluation models a.k.a evaluator #########
+######### prepare multi z evaluation models a.k.a evaluator #########
 
 model = small(args)
-evaluator = MultiEvalModule(args, model, args.nclass, scales=args.scales, flip=False).cuda()
+evaluator = MultiEvalModule(args, model, args.nclass, flip=False).cuda()
 evaluator.eval()
 
 ######### inference #########
