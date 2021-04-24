@@ -204,5 +204,5 @@ evaluator.eval()
 ######### inference #########
 
 image = torch.rand(1,3,512,512)
-pred = evaluator.parallel_forward(image)            # type : list
+pred = evaluator.parallel_forward(image)            # type : list | len(list)=1
 print(pred[0])
