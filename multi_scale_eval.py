@@ -130,7 +130,7 @@ class MultiEvalModule(DataParallel):
             score = resize_image(outputs, h, w, **up_kwargs)
             scores += score
 
-        return scores
+        return scores                                   #############################  scores/len(self.scales)
 
 
 def module_inference(module, image, flip=True):
