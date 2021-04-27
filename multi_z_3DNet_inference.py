@@ -77,7 +77,7 @@ class MultiEvalModule(DataParallel):
             for z0 in z_grids:
                   z1 = z0 + self.z_len
                   crop_img = crop_image(image, z0,z1)
-                  output = module_inference(self.module, crop_img, self.flip)
+                  outputs[:,:,z0:z1,:,:] += module_inference(self.module, crop_img, self.flip)
                   count_norm[:,:,z0:z1,:,:] += 1
             assert((count_norm==0).sum()==0)
             outputs = outputs / count_norm
