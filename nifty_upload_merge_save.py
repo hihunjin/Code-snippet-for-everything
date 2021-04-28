@@ -54,3 +54,15 @@ gt.SetDirection(ct.GetDirection())
 gt.SetOrigin(ct.GetOrigin())
 gt.SetSpacing(ct.GetSpacing())
 sitk.WriteImage(gt,'102_mask_all.nii')
+
+
+####### calculate voxel mean    #######
+'''
+gal = np.average(ct_array, weights=(seg_array[0]==1))
+pan = np.average(ct_array, weights=(seg_array[1]==1))
+sto = np.average(ct_array, weights=(seg_array[2]==1))
+spl = np.average(ct_array, weights=(seg_array[3]==1))
+liv = np.average(ct_array, weights=(seg_array[4]==1))
+print(gal, pan, sto, spl, liv)
+63.55165289256198 106.12858224016145 -274.9645386253461 142.19617071833304 134.38175158858587
+'''
