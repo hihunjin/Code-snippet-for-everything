@@ -44,4 +44,4 @@ plot_scene({
     "Pointcloud": {
         "person": point_cloud
     }
-})
+}, pointcloud_marker_size= 2)           #  default : pointcloud_marker_size=1
