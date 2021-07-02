@@ -2,12 +2,12 @@
 !pip install connected-components-3d --no-binary :all:
 
 
-
-
-# generate 3d numpy array
+# import
 import numpy as np
 import torch
 
+
+# generate 3d numpy array
 a = torch.randint(0,6,(50,512,512))
 print(a.min(),a.max())
 with open('5.npy', 'wb') as f:
