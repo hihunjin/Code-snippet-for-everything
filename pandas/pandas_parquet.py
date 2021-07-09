@@ -22,3 +22,10 @@ df.to_parquet('myfile.parquet', index=False)
 print(df)
 #   hi im david  .
 # 0  3  1     2  0
+
+
+# read
+df1 = pd.read_parquet('myfile.parquet')
+df1
+#   hi im david  .
+# 0  3  1     2  0
