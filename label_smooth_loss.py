@@ -3,7 +3,6 @@ classification, 2D segmentation, 3D segmentation
 All round loss function
 Label smoothing loss
 '''
-import torch
 import torch.nn as nn
 
 
@@ -23,7 +22,7 @@ class LabelSmoothing(nn.Module):
         self.reduction = reduction
 
     def forward(self, x, target):
-        logprobs = torch.nn.functional.log_softmax(x, dim=1)
+        logprobs = nn.functional.log_softmax(x, dim=1)
 
         nll_loss = -logprobs.gather(dim=1, index=target.unsqueeze(1))
         nll_loss = nll_loss.squeeze(1)
@@ -35,6 +34,8 @@ class LabelSmoothing(nn.Module):
             return loss.mean(dim = list(range(1, loss.ndim  )))
           
 if __name__=='__main__':
+    import torch
+    
     criteria = LabelSmoothing(smoothing=0.1, reduction=None)
     logits = torch.randn(8, 19, 384, 384) # nchw, float/half
     lbs = torch.randint(0, 19, (8, 384, 384)) # nhw, int64_t
