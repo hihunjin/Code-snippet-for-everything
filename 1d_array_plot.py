@@ -1,3 +1,6 @@
+'''
+plot 1d array with a line
+'''
 import matplotlib.pyplot as plt
 import numpy as np
 
