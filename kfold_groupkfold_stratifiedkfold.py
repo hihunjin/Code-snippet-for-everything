@@ -16,3 +16,10 @@ group kfold
 grps = [4,1,1,1,1,1,2,4,2,4,2,2,2,3,3,4,3,3,3,4]
 kfold = GroupKFold(n_splits=4).split(a, a, grps)
 list(kfold)
+
+'''
+Stratified KFold
+'''
+grps = [4,1,1,1,1,1,2,4,2,4,2,2,2,3,3,4,3,3,3,4]
+kfold = StratifiedKFold(n_splits=4).split(a, grps)
+list(kfold)
