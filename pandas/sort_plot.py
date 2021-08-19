@@ -12,6 +12,7 @@ df
 
 # sort
 df1 = df.sort_values(by='numbers', ignore_index=True)     # ignore_index=True MUST!
+# df1 = df.sort_values(by='numbers').reset_index()          # 왼쪽의 방법으로 되기도 함
 
 # plot
 df1.plot()
