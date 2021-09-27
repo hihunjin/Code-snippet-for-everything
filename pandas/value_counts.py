@@ -7,7 +7,7 @@ df.columns
 # Index(['Name', '     "Sex"', ' "Age"', ' "Height (in)"', ' "Weight (lbs)"'], dtype='object')
 
 ###### counts
-df['     "Sex"'].value_counts()
+df['     "Sex"'].value_counts(dropna=False)
 #        "M"    11
 #        "F"     7
 # Name:      "Sex", dtype: int64
