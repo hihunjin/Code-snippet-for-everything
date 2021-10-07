@@ -69,8 +69,8 @@ class GaussianSmoothing(nn.Module):
         """
         return self.conv(input, weight=self.weight, groups=self.groups)
 
-
-smoothing = GaussianSmoothing(3, 5, 1)
-input = torch.rand(1, 3, 100, 100)
+channel = 3
+smoothing = GaussianSmoothing(channel, 5, 1)
+input = torch.rand(1, channel, 100, 100)
 input = F.pad(input, (2, 2, 2, 2), mode='reflect')
 output = smoothing(input)
