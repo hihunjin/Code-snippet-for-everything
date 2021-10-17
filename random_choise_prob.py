@@ -1,6 +1,11 @@
 from numpy.random import choice
 # draw = choice(list_of_candidates, number_of_items_to_pick,
 #               p=probability_distribution)
+# draw = choice(population=[['a','b'], ['b','a'], ['c','b']],
+# weights=[0.2, 0.2, 0.6],
+# k=10
+# )
+
 draw = choice(['봄', '여름', '가을', '겨울'], 10,
               p=[0.4,0.3,0.2,0.1])
 print(draw)
