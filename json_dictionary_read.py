@@ -11,6 +11,8 @@ data = json.load(f)
 # list
 for i,j in data.items():
     print(i,j)
-  
+# pretty print
+print(json.dumps(data, indent=4, sort_keys=True))
+
 # Closing file
 f.close()
