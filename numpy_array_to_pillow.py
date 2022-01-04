@@ -6,5 +6,5 @@ e = np.random.rand(150,150,3).astype('uint8')
 out = Image.fromarray(e)                      #no error
 
 # 1d
-e = np.random.rand(150,150).astype('uint8')
+e = (np.random.rand(150,150) * 256).astype('uint8')
 out = Image.fromarray(e, mode='L')            #no error
