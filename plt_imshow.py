@@ -9,3 +9,6 @@ image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
 # show
 plt.imshow(image)
+
+# show without edge blur
+plt.imshow(image, interpolation='nearest')
