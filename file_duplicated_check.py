@@ -1,7 +1,9 @@
 import os
 
+dir = '/content'
+
 all_file_names = {}
-for path, subdirs, files in os.walk(p):
+for path, subdirs, files in os.walk(dir):
     for name in files:
         if name in all_file_names:
             all_file_names[name].append(os.path.join(path, name))
