@@ -8,7 +8,6 @@ def file_duplicated_check(dir):
         for name in files:
             if name in all_file_names:
                 all_file_names[name].append(os.path.join(path, name))
-                print(f"the name '{name}' is duplicated. loc : {all_file_names[name]}")
             else:
                 all_file_names[name] = [os.path.join(path, name)]
     for keys, values in all_file_names.items():
