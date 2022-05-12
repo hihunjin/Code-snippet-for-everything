@@ -15,4 +15,8 @@ df1 = df.sort_values(by='numbers', ignore_index=True)     # ignore_index=True MU
 # df1 = df.sort_values(by='numbers').reset_index()          # 왼쪽의 방법으로 되기도 함
 
 # plot
-df1.plot()
+df1.plot(title="sort plot")
+
+#save
+fig = df1.plot().get_figure()
+fig.savefig("plot.jpg")
