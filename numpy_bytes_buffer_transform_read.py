@@ -11,3 +11,7 @@ print(np_byte)
 # restore from bytes
 out_image = np.frombuffer(np_byte, dtype=np_image.dtype)
 out_image = out_image.reshape(np_image.shape)
+
+# check if all elements of a numpy array are equal
+(np_image == out_image).all()
+# True
