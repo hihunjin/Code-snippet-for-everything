@@ -48,7 +48,7 @@ if __name__ == "__main__":
         sys.path.append(dir_name)
 
         # do jobs
-        L = os.listdir()
+        L = os.listdir(dir_name)
         print("os.listdir()", L)
 
         # remove system path and del
