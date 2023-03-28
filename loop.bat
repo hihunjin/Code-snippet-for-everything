@@ -16,9 +16,9 @@
 #     for network_t in $NT
 #     do
 #         python folder/run.py \
-                -d $dataset \
-                --logdir ../$dataset/$network_t \
-                -m $network_t
+#               -d $dataset \
+#               --logdir ../$dataset/$network_t \
+#               -m $network_t
 #     done
 # done
 
