@@ -15,7 +15,10 @@
 # do
 #     for network_t in $NT
 #     do
-#         python folder/run.py -d $dataset --logdir ../$dataset/$network_t -m $network_t
+#         python folder/run.py \
+                -d $dataset \
+                --logdir ../$dataset/$network_t \
+                -m $network_t
 #     done
 # done
 
@@ -24,6 +27,9 @@ $env:NT = @("n1", "n2", "n3")
 
 for %%d in (%DN%) do (
     for %%t in (%NT%) do (
-        python folder/run.py -d %%d --logdir ../%%d/%%t -m %%t
+        python folder/run.py ^
+            -d %%d ^
+            --logdir ../%%d/%%t ^
+            -m %%t
     )
 )
