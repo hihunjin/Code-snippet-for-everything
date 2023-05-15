@@ -71,12 +71,20 @@ class LoopsNestedDictionary:
             g_all = glob(p, recursive=True)
             try:
                 path = g_all[0]
+                if len(g_all) > 1:
+                    if not isinstance(all_data_from_a_pair, list):
+                        all_data_from_a_pair = [{} for i in range(len(g_all))]
+                    for i, path in enumerate(g_all):
+                        all_data_from_a_pair[i].update(
+                            modify_data(path, load_data(path))
+                        )
+                else:
+                    all_data_from_a_pair.update(
+                        modify_data(path, load_data(path))
+                    )
             except IndexError:
                 print(f"not found p: {p}")
                 continue
-            all_data_from_a_pair.update(
-                modify_data(path, load_data(path))
-            )
         return "/".join(pair), all_data_from_a_pair
 
     def to_dict(self) -> Dict:
@@ -86,9 +94,21 @@ class LoopsNestedDictionary:
                 key: pair[i]
                 for i, key in enumerate(self.all_keys)
             }
-            pair, all_data_from_a_pair = self.search(pair)
-            collect.update(all_data_from_a_pair)
-            result_list.append(collect)
+            pair_name, all_data_from_a_pair = self.search(pair)
+            if isinstance(all_data_from_a_pair, list):
+                collect = [
+                    {
+                        key: pair[i]
+                        for i, key in enumerate(self.all_keys)
+                    }
+                    for _ in range(len(all_data_from_a_pair))
+                ]
+                for i, _all_data_from_a_pair in enumerate(all_data_from_a_pair):
+                    collect[i].update(_all_data_from_a_pair)
+                result_list.extend(collect)
+            else:
+                collect.update(all_data_from_a_pair)
+                result_list.append(collect)
         df = pd.DataFrame(result_list)
         return df
 
