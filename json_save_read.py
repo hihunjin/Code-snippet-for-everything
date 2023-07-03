@@ -23,7 +23,7 @@ data['people'].append({
 import json
 def save_json(p, data):
     with open(p, 'w') as outfile:
-        json.dump(data, outfile)
+        json.dump(data, outfile, indent=4)
 ####### json read = load #######
 import json
 def load_json(p):
