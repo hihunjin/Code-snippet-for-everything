@@ -31,14 +31,19 @@ class MyClass:
 
 instance = MyClass()
 
+def to_get_functions(attribute):
+    while hasattr(attribute, "__wrapped__"):
+        attribute = attribute.__wrapped__
+    return attribute
+
 # 라인 프로파일러
 from line_profiler import LineProfiler
 profiler = LineProfiler()
-profiler.add_function(instance.inc)
-profiler.add_function(instance.dec)
-profiler.add_function(instance.get.__wrapped__)
-profiler.add_function(instance.sec_to_ms)
-profiler.add_function(instance.div.divide.__wrapped__)
+profiler.add_function(to_get_functions(instance.inc))
+profiler.add_function(to_get_functions(instance.dec))
+profiler.add_function(to_get_functions(instance.get))
+profiler.add_function(to_get_functions(instance.sec_to_ms))
+profiler.add_function(to_get_functions(instance.div.divide))
 
 num_iter = 200
 for i in range(num_iter):
