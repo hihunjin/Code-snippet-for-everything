@@ -1,4 +1,4 @@
-# !wget https://thispersondoesnotexist.com/image -O 'image.png'
+# !wget https://thispersondoesnotexist.com -O 'image.png'
 
 import matplotlib.pyplot as plt
 import cv2
