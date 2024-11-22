@@ -3,7 +3,11 @@ import os
 from slack_sdk import WebClient
 from slack_sdk.errors import SlackApiError
 
-def upload_file(file_path, channel_id, slack_token, initial_comment=None):
+def upload_file(file_path, channel_id: str, slack_token: str, initial_comment=None):
+    """
+    channel_id: "C0........"
+    slack_token: "xo..-........"
+    """
     client = WebClient(token=slack_token)
     try:
         response = client.files_upload_v2(
