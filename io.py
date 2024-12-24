@@ -29,6 +29,10 @@ def save_json(p, data) -> None:
         json.dump(data, outfile, indent=4)
 
 
-def load_json(p) -> Any:
-    with open(p) as json_file:
-        return json.load(json_file)
+def load_json(p: str) -> Any:
+    try:
+        with open(p) as json_file:
+            return json.load(json_file)
+    except Exception as e:
+        print(f"Error: {e} on {p}")
+        raise e
